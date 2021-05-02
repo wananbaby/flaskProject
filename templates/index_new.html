@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui.css">
+</head>
+<body style="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+      <legend style="color: #23262E;">色彩实验室</legend>
+    </fieldset>
+    <div class="layui-bg-gray" style="padding: 30px;background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
+        <form class="layui-form" method="post" action="/upload" enctype="multipart/form-data">
+            <input id="image" style="color: #23262E;background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);" name="image" type="file" class="layui-btn" data-target="_bank" onchange="changepic(this)" accept="image/jpg,image/jpeg,image/png,image/PNG"/>
+            <input id="submit" type="submit" lay-submit lay-filter="submit" value="提交信息" class="layui-btn layui-btn-radius" style="color: #23262E;background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);"/>
+        </form>
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md6">
+                <div class="layui-card">
+                    <div class="layui-card-header" style="color: #23262E;background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);">原始图像</div>
+                    <img src="./images/old.png" id="img1" style="width: 100%;height: 100%;object-fit:cover;">
+                </div>
+
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-card">
+                    <div class="layui-card-header" style="color: #23262E;background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);">修复图像</div>
+                    <img src="./images/new.png" id="img2" style="width: 100%;height: 100%;object-fit:cover;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="layui.js"></script>
+    <script>
+        function changepic() {
+            var reads = new FileReader();
+            f = document.getElementById('image').files[0];
+            reads.readAsDataURL(f);
+            reads.onload = function (e) {
+                document.getElementById('img1').src = this.result;
+            }
+        }
+    </script>
+</body>
+</html>
